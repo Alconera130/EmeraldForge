@@ -1,4 +1,4 @@
 # EmeraldForge
-An TheConceptualFramework project
+A TheConceptualFramework project
 
 Powered by ESP32
