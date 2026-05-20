@@ -23,5 +23,5 @@ void loop() {
     bluetooth();
 
     digitalWrite(activateSensors, LOW); // Ensure sensors are deactivated when not in use
-    delay(980); // Delay to avoid overwhelming the Bluetooth connection
+    delay(600); // Delay to avoid overwhelming the Bluetooth connection
 }
