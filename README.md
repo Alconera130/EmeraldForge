@@ -1,4 +1,4 @@
-# Automatic-Chlorella-Culture
-An EmeraldForge project
+# EmeraldForge
+An TheConceptualFramework project
 
 Powered by ESP32
