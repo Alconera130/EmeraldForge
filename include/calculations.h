@@ -1,4 +1,6 @@
 #pragma once
 #include <Arduino.h>
 
-float readVoltage(int pin);
+float adcToVoltage(int pin);
+float adcRatio(int pin);
+float adcRead(int pin);

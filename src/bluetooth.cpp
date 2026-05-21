@@ -19,11 +19,11 @@ void bluetooth() {
             Serial.println("Activating sensors...");
             digitalWrite(activateSensors, HIGH); // Activate the sensors
 
-            float pHValue = readVoltage(pHSensor);
-            pHValue = 7 + ((2.5 - pHValue) * 0.18) + 0 /* offset */; // Convert voltage to pH value (example calibration)
+            float pHValue = adcRead(pHSensor);
 
-            float turbidityValue = readVoltage(turbiditySensor);
+            float turbidityValue = adcRatio(turbiditySensor);
             if (turbidityValue < 0) turbidityValue = 0; if (turbidityValue > 1) turbidityValue = 1;
+            turbidityValue = turbidityValue * 100; // Convert to percentage
 
             SerialBT.print(pHValue, 2);
             SerialBT.print(",");
