@@ -1,6 +1,14 @@
 #pragma once
 
-extern const int pHSensor; // GPIO pin connected to the pH sensor
-extern const int turbiditySensor; // GPIO pin connected to the turbidity sensor
-extern const int activatePump; // GPIO pin to activate the pump
-extern const int activateSensors; // GPIO pin to activate the sensors
+extern const int pHSensor;
+extern const int turbiditySensor;
+extern const int activatePump;
+extern const int activateSensors;
+extern bool isDeepSleepEnabled;
+
+
+extern float previousMillis;
+extern float harvestMillis;
+
+extern String command;
+extern String incoming;

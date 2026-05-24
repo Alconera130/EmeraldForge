@@ -5,4 +5,5 @@
 
 extern BluetoothSerial SerialBT;
 
-void bluetooth();
+void bluetooth(String command = "");
+void readBLT();
