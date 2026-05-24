@@ -11,8 +11,8 @@ float pH() {
         delay(10);
     }
 
-    pHValue = pHValue / 20;
-    pHValue = 7.0 + (pHValue - 512) / 100.0;
+    pHValue = ((pHValue / 20) * 3.3 / 4095.0); pHValue = pHValue * 1.5;
+    pHValue = 7 + ((2.5 - pHValue) / 0.18);
     if (pHValue < 0) pHValue = 0; if (pHValue > 14) pHValue = 14;
 
     return pHValue;
