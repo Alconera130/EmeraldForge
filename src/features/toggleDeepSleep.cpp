@@ -10,4 +10,6 @@ void toggleDeepSleep() {
 
     isDeepSleepEnabled = (command == "true");
     Serial.println("DeepSleep mode is now " + String(isDeepSleepEnabled ? "enabled" : "disabled"));
+
+    command = "";
 }

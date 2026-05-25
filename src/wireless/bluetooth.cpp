@@ -2,16 +2,24 @@
 
 #include "wireless/bluetooth.h"
 #include "main.h"
-#include "sensors/sensors.h"
 
 #include "features/features.h"
 
-BluetoothSerial SerialBT;
+void ServerCallbacks::onConnect(NimBLEServer* pServer) {
+    isDeviceConnected = true;
+    Serial.println("SCADA CLIENT CONNECTED");
+}
+
+void ServerCallbacks::onDisconnect(NimBLEServer* pServer) {
+    isDeviceConnected = false;
+
+    Serial.println("SCADA CLIENT DISCONNECTED");
+
+    NimBLEDevice::startAdvertising();
+}
 
 void bluetooth() {
-    if (SerialBT.hasClient()) {
-        readLine();
-
+    if (isDeviceConnected) {
         activateHarvest();
         toggleDeepSleep();
         sendData();

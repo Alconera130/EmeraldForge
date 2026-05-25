@@ -1,9 +1,20 @@
 #pragma once
 #include <Arduino.h>
 
-#include "BluetoothSerial.h"
+#include <NimBLEDevice.h>
 
-extern BluetoothSerial SerialBT;
+extern NimBLEServer *pServer;
+extern NimBLECharacteristic* pCharacteristic;
 
-void bluetooth(String command = "");
-void readBLT();
+void bluetooth();
+
+class CommandCallbacks : public NimBLECharacteristicCallbacks {
+public:
+    void onWrite(NimBLECharacteristic* pCharacteristic);
+};
+
+class ServerCallbacks : public NimBLEServerCallbacks {
+public:
+    void onConnect(NimBLEServer* pServer);
+    void onDisconnect(NimBLEServer* pServer);
+};

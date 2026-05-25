@@ -6,24 +6,23 @@
 #include "features/features.h"
 
 void sendData() {
-    if (!(previousMillis == 0 || millis() - previousMillis >= 1000) && command != "") return;
+    if (!(previousMillis == 0 || millis() - previousMillis >= 1000) && command != "")
+        return;
 
     previousMillis = millis();
+
     Serial.println("Activating sensors...");
     digitalWrite(activateSensors, HIGH);
 
     float pHValue = pH();
     float turbidityValue = turbidity();
 
-    SerialBT.print(pHValue, 2);
-    SerialBT.print(",");
-    SerialBT.println(turbidityValue, 2);
+    String payload = String(pHValue, 2) + "," + String(turbidityValue, 2);
 
-    Serial.println("================================");
-    Serial.print("pH Value: ");
-    Serial.print(pHValue, 2);
-    Serial.print(", Turbidity Value: ");
-    Serial.println(turbidityValue, 2);
+    pCharacteristic->setValue(payload.c_str());
+    pCharacteristic->notify();
+
+    Serial.println("Sent to phone: " + payload);
 
     digitalWrite(activateSensors, LOW);
 }
