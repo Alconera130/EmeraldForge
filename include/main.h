@@ -6,8 +6,6 @@ extern const int activatePump;
 extern const int activateSensors;
 extern bool isDeepSleepEnabled;
 
-extern bool isDeviceConnected;
-
 extern float previousMillis;
 extern float harvestMillis;
 

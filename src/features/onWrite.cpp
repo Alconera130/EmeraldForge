@@ -4,16 +4,15 @@
 #include "main.h"
 #include "features/features.h"
 
-void CommandCallbacks::onWrite(NimBLECharacteristic* pCharacteristic) {
+void onWrite() {
+    while (SerialBT.available()) {
+        char c = SerialBT.read();
 
-    std::string value = pCharacteristic->getValue();
-
-    if (value.empty()) return;
-
-    String incoming = String(value.c_str());
-    incoming.trim();
-
-    command = incoming;
-
-    Serial.println("CMD: " + command);
+        if (c == '\n') {
+            command = incoming;
+            incoming = "";
+        } else {
+            incoming += c;
+        }
+    }
 }

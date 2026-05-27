@@ -19,8 +19,7 @@ void sendData() {
 
     String payload = String(pHValue, 2) + "," + String(turbidityValue, 2);
 
-    pCharacteristic->setValue(payload.c_str());
-    pCharacteristic->notify();
+    SerialBT.println(payload);
 
     Serial.println("Sent to phone: " + payload);
 

@@ -3,6 +3,6 @@
 #include <NimBLEDevice.h>
 
 void activateHarvest();
-//void readLine();
+void onWrite();
 void sendData();
 void toggleDeepSleep();
