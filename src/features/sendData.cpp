@@ -6,10 +6,7 @@
 #include "features/features.h"
 
 void sendData() {
-    if (!(previousMillis == 0 || millis() - previousMillis >= 1000) && command != "")
-        return;
-
-    previousMillis = millis();
+    if (!(previousMillis == 0 || millis() - previousMillis >= 1000) && (command == "")) return;
 
     Serial.println("Activating sensors...");
     digitalWrite(activateSensors, HIGH);
@@ -17,11 +14,12 @@ void sendData() {
     float pHValue = pH();
     float turbidityValue = turbidity();
 
-    String payload = String(pHValue, 2) + "," + String(turbidityValue, 2);
+    String payload = String(pHValue, 1) + "," + String(turbidityValue, 2);
 
     SerialBT.println(payload);
 
     Serial.println("Sent to phone: " + payload);
 
+    previousMillis = millis();
     digitalWrite(activateSensors, LOW);
 }

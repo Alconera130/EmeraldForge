@@ -1,5 +1,9 @@
 #pragma once
 
+#include "BluetoothSerial.h"
+
+extern BluetoothSerial SerialBT;
+
 extern const int pHSensor;
 extern const int turbiditySensor;
 extern const int activatePump;

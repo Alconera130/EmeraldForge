@@ -6,6 +6,8 @@
 #include "features/features.h"
 
 void bluetooth() {
+    if (!SerialBT.connected()) return;
+
     onWrite();
 
     activateHarvest();

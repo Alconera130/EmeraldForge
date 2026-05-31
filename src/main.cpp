@@ -1,15 +1,13 @@
 #include <Arduino.h>
 #include "main.h"
 #include "wireless/bluetooth.h"
-#include "features/features.h"
 
-NimBLEServer* pServer = nullptr;
-NimBLECharacteristic* pCharacteristic = nullptr;
+BluetoothSerial SerialBT;
 
-const int pHSensor = 19; // GPIO pin connected to the pH sensor
-const int turbiditySensor = 20; // GPIO pin connected to the turbidity sensor
+const int pHSensor = 33; // GPIO pin connected to the pH sensor
+const int turbiditySensor = 32; // GPIO pin connected to the turbidity sensor
 const int activatePump = 21; // GPIO pin to activate the pump
-const int activateSensors = 47; // GPIO pin to activate the sensors
+const int activateSensors = 19; // GPIO pin to activate the sensors
 
 float previousMillis = 0; // Variable to track the last time sensor data was sent
 float harvestMillis = 0; // Variable to track the start time of harvesting
